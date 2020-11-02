@@ -1,0 +1,185 @@
+$vm_base: 750
+$brand_color: rgb(30, 155, 177)
+$title_color: #333333
+$content_color: #666666
+@function vw($px)
+    @return ($px / $vm_base) * 100vw
+
+$total_container_width: 750
+$total_container_height: 1300
+$split_line_width: 4
+
+$point_r: $split_line_width / 2
+$icon_width: 20
+$icon_height: 20
+$icon_border_radius: 20
+
+$point_1_top: 100
+$box_1_width: 280
+$box_1_height: 160
+
+$point_2_top: 280
+$box_2_width: 280
+$box_2_height: 120
+
+$point_3_top: 340
+$box_3_width: 280
+$box_3_height: 180
+
+$point_4_top: 520
+$box_4_width: 280
+$box_4_height: 120
+
+$point_5_top: 760
+$box_5_width: 280
+$box_5_height: 240
+
+$point_6_top: 960
+$box_6_width: 280
+$box_6_height: 220
+
+$triangle_r: 16
+
+*
+    margin: 0
+    padding: 0
+
+.total-container
+    width: vw($total_container_width)
+    height: vw($total_container_height)
+    display: flex
+    justify-content: space-between
+
+    .left-box
+        width: vw(($total_container_width - $split_line_width) / 2)
+        height: 100%
+        background-color: lightpink
+
+    .split-line
+        width: vw($split_line_width)
+        height: 100%
+        background-color: black
+        position: relative
+        display: flex
+        flex-direction: column
+
+        .point
+            width: vw($point_r * 2)
+            height: vw($point_r * 2)
+            position: absolute
+            left: 0
+            background-color: green
+
+            .icon
+                width: vw($icon_width)
+                height: vw($icon_height)
+                position: absolute
+                background-color: blue
+                left: vw($point_r - $icon_width / 2)
+        
+        .triangle-left
+            width: 0
+            height: 0
+            border-left: vw($triangle_r) solid yellow
+            border-top: vw($triangle_r) solid transparent
+            border-bottom: vw($triangle_r) solid transparent
+            position: absolute
+            right: vw(0 - $triangle_r)
+
+        .triangle-right
+            width: 0
+            height: 0
+            border-right: vw($triangle_r) solid yellow
+            border-top: vw($triangle_r) solid transparent
+            border-bottom: vw($triangle_r) solid transparent
+            position: absolute
+            left: vw(0 - $triangle_r)
+
+        .point-1
+            top: vw($point_1_top)
+            .box
+                width: vw($box_1_width)
+                height: vw($box_1_height)
+                position: absolute
+                background-color: yellow
+                left: vw(0 - $icon_width / 2 - $box_1_width - (($total_container_width - $split_line_width) / 2 - $box_1_width ) / 2)
+                top: vw($icon_width / 2 - $box_1_height / 2)
+
+                .triangle
+                    @extend .triangle-left
+                    top: vw(($box_1_height - $triangle_r * 2) / 2)
+
+        .point-2
+            top: vw($point_2_top)
+            .box
+                width: vw($box_2_width)
+                height: vw($box_2_height)
+                position: absolute
+                background-color: yellow
+                left: vw($icon_width / 2 + (($total_container_width - $split_line_width) / 2 - $box_2_width ) / 2)
+                top: vw($icon_width / 2 - $box_2_height / 2)
+
+                .triangle
+                    @extend .triangle-right
+                    top: vw(($box_2_height - $triangle_r * 2) / 2)
+
+        .point-3
+            top: vw($point_3_top)
+            .box
+                width: vw($box_3_width)
+                height: vw($box_3_height)
+                position: absolute
+                background-color: yellow
+                left: vw(0 - $icon_width / 2 - $box_3_width - (($total_container_width - $split_line_width) / 2 - $box_3_width ) / 2)
+                top: vw($icon_width / 2 - $box_3_height / 2)
+
+                .triangle
+                    @extend .triangle-left
+                    top: vw(($box_3_height - $triangle_r * 2) / 2)
+
+        .point-4
+            top: vw($point_4_top)
+            .box
+                width: vw($box_4_width)
+                height: vw($box_4_height)
+                position: absolute
+                background-color: yellow
+                left: vw($icon_width / 2 + (($total_container_width - $split_line_width) / 2 - $box_4_width ) / 2)
+                top: vw($icon_width / 2 - $box_4_height / 2)
+
+                .triangle
+                    @extend .triangle-right
+                    top: vw(($box_4_height - $triangle_r * 2) / 2)
+
+        .point-5
+            top: vw($point_5_top)
+            .box
+                width: vw($box_5_width)
+                height: vw($box_5_height)
+                position: absolute
+                background-color: yellow
+                left: vw(0 - $icon_width / 2 - $box_5_width - (($total_container_width - $split_line_width) / 2 - $box_5_width ) / 2)
+                top: vw($icon_width / 2 - $box_5_height / 2)
+
+                .triangle
+                    @extend .triangle-left
+                    top: vw(($box_5_height - $triangle_r * 2) / 2)
+
+        .point-6
+            top: vw($point_6_top)
+            .box
+                width: vw($box_6_width)
+                height: vw($box_6_height)
+                position: absolute
+                background-color: yellow
+                left: vw($icon_width / 2 + (($total_container_width - $split_line_width) / 2 - $box_6_width ) / 2)
+                top: vw($icon_width / 2 - $box_6_height / 2)
+
+                .triangle
+                    @extend .triangle-right
+                    top: vw(($box_6_height - $triangle_r * 2) / 2)
+
+    .right-box
+        width: vw(($total_container_width - $split_line_width) / 2)
+        height: 100%
+        background-color: lightblue
