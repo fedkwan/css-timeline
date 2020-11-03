@@ -41,6 +41,10 @@ $box_6_width: 280
 $box_6_height: 260
 
 $triangle_r: 16
+$title_font_size: 28
+$title_font_weight: 700
+$content_font_size: 20
+$p_margin_top_and_bottom: 5
 
 *
     margin: 0
@@ -66,14 +70,14 @@ $triangle_r: 16
         flex-direction: column
 
         .title
-            font-size: vw(28)
-            font-weight: 700
+            font-size: vw($title_font_size)
+            font-weight: $title_font_weight
 
         .content
-            font-size: vw(20)
+            font-size: vw($content_font_size)
 
             p
-                margin: vw(5) auto
+                margin: vw($p_margin_top_and_bottom) auto
 
         .point
             width: vw($point_r * 2)
