@@ -2,6 +2,8 @@ $vm_base: 750
 $brand_color: rgb(30, 155, 177)
 $title_color: #333333
 $content_color: #666666
+$box_background_color: ivory
+
 @function vw($px)
     @return ($px / $vm_base) * 100vw
 
@@ -14,29 +16,29 @@ $icon_width: 20
 $icon_height: 20
 $icon_border_radius: 20
 
-$point_1_top: 100
+$point_1_top: 160
 $box_1_width: 280
-$box_1_height: 160
+$box_1_height: 220
 
 $point_2_top: 280
 $box_2_width: 280
-$box_2_height: 120
+$box_2_height: 260
 
-$point_3_top: 340
+$point_3_top: 440
 $box_3_width: 280
-$box_3_height: 180
+$box_3_height: 220
 
-$point_4_top: 520
+$point_4_top: 580
 $box_4_width: 280
-$box_4_height: 120
+$box_4_height: 260
 
 $point_5_top: 760
 $box_5_width: 280
-$box_5_height: 240
+$box_5_height: 220
 
 $point_6_top: 960
 $box_6_width: 280
-$box_6_height: 220
+$box_6_height: 260
 
 $triangle_r: 16
 
@@ -50,10 +52,10 @@ $triangle_r: 16
     display: flex
     justify-content: space-between
 
-    .left-box
+    .halt-box
         width: vw(($total_container_width - $split_line_width) / 2)
         height: 100%
-        background-color: lightpink
+        background-color: pink
 
     .split-line
         width: vw($split_line_width)
@@ -63,24 +65,34 @@ $triangle_r: 16
         display: flex
         flex-direction: column
 
+        .title
+            font-size: vw(28)
+            font-weight: 700
+
+        .content
+            font-size: vw(20)
+
+            p
+                margin: vw(5) auto
+
         .point
             width: vw($point_r * 2)
             height: vw($point_r * 2)
             position: absolute
             left: 0
-            background-color: green
 
             .icon
                 width: vw($icon_width)
                 height: vw($icon_height)
+                border-radius: vw($icon_width)
                 position: absolute
-                background-color: blue
+                background-color: lightgreen
                 left: vw($point_r - $icon_width / 2)
         
         .triangle-left
             width: 0
             height: 0
-            border-left: vw($triangle_r) solid yellow
+            border-left: vw($triangle_r) solid $box_background_color
             border-top: vw($triangle_r) solid transparent
             border-bottom: vw($triangle_r) solid transparent
             position: absolute
@@ -89,19 +101,26 @@ $triangle_r: 16
         .triangle-right
             width: 0
             height: 0
-            border-right: vw($triangle_r) solid yellow
+            border-right: vw($triangle_r) solid $box_background_color
             border-top: vw($triangle_r) solid transparent
             border-bottom: vw($triangle_r) solid transparent
             position: absolute
             left: vw(0 - $triangle_r)
+        
+        .box-origin
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            background-color: $box_background_color
 
         .point-1
             top: vw($point_1_top)
             .box
+                @extend .box-origin
                 width: vw($box_1_width)
                 height: vw($box_1_height)
                 position: absolute
-                background-color: yellow
                 left: vw(0 - $icon_width / 2 - $box_1_width - (($total_container_width - $split_line_width) / 2 - $box_1_width ) / 2)
                 top: vw($icon_width / 2 - $box_1_height / 2)
 
@@ -112,10 +131,10 @@ $triangle_r: 16
         .point-2
             top: vw($point_2_top)
             .box
+                @extend .box-origin
                 width: vw($box_2_width)
                 height: vw($box_2_height)
                 position: absolute
-                background-color: yellow
                 left: vw($icon_width / 2 + (($total_container_width - $split_line_width) / 2 - $box_2_width ) / 2)
                 top: vw($icon_width / 2 - $box_2_height / 2)
 
@@ -126,10 +145,10 @@ $triangle_r: 16
         .point-3
             top: vw($point_3_top)
             .box
+                @extend .box-origin
                 width: vw($box_3_width)
                 height: vw($box_3_height)
                 position: absolute
-                background-color: yellow
                 left: vw(0 - $icon_width / 2 - $box_3_width - (($total_container_width - $split_line_width) / 2 - $box_3_width ) / 2)
                 top: vw($icon_width / 2 - $box_3_height / 2)
 
@@ -140,10 +159,10 @@ $triangle_r: 16
         .point-4
             top: vw($point_4_top)
             .box
+                @extend .box-origin
                 width: vw($box_4_width)
                 height: vw($box_4_height)
                 position: absolute
-                background-color: yellow
                 left: vw($icon_width / 2 + (($total_container_width - $split_line_width) / 2 - $box_4_width ) / 2)
                 top: vw($icon_width / 2 - $box_4_height / 2)
 
@@ -154,10 +173,10 @@ $triangle_r: 16
         .point-5
             top: vw($point_5_top)
             .box
+                @extend .box-origin
                 width: vw($box_5_width)
                 height: vw($box_5_height)
                 position: absolute
-                background-color: yellow
                 left: vw(0 - $icon_width / 2 - $box_5_width - (($total_container_width - $split_line_width) / 2 - $box_5_width ) / 2)
                 top: vw($icon_width / 2 - $box_5_height / 2)
 
@@ -168,18 +187,13 @@ $triangle_r: 16
         .point-6
             top: vw($point_6_top)
             .box
+                @extend .box-origin
                 width: vw($box_6_width)
                 height: vw($box_6_height)
                 position: absolute
-                background-color: yellow
                 left: vw($icon_width / 2 + (($total_container_width - $split_line_width) / 2 - $box_6_width ) / 2)
                 top: vw($icon_width / 2 - $box_6_height / 2)
 
                 .triangle
                     @extend .triangle-right
                     top: vw(($box_6_height - $triangle_r * 2) / 2)
-
-    .right-box
-        width: vw(($total_container_width - $split_line_width) / 2)
-        height: 100%
-        background-color: lightblue
